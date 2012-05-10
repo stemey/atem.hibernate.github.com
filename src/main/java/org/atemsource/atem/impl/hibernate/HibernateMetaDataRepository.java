@@ -1,20 +1,11 @@
 /*******************************************************************************
- * Stefan Meyer, 2012
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Stefan Meyer, 2012 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  ******************************************************************************/
 package org.atemsource.atem.impl.hibernate;
-
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -40,9 +31,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.type.ComponentType;
-import org.hibernate.type.IntegerType;
-import org.hibernate.type.LongType;
-import org.hibernate.type.StringType;
 import org.hibernate.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -191,23 +179,7 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 	{
 		Type identifierType = classMetadata.getIdentifierType();
 		HibernateEntityType entityType = null;
-		if (identifierType instanceof LongType)
-		{
-			entityType = beanCreator.create(LongEntityType.class);
-		}
-		else if (identifierType instanceof IntegerType)
-		{
-			entityType = beanCreator.create(IntegerEntityType.class);
-		}
-		else if (identifierType instanceof StringType)
-		{
-			entityType = beanCreator.create(StringEntityType.class);
-		}
-		else
-		{
-			throw new IllegalStateException("unsupported identifier type " + identifierType + " for type "
-				+ classMetadata.getEntityName());
-		}
+		entityType = beanCreator.create(HibernateEntityType.class);
 		entityType.setPrimaryKeyNullable(!identifierType.getReturnedClass().isPrimitive());
 		entityType.setEntityClass(classMetadata.getMappedClass(EntityMode.POJO));
 		attacheServicesToEntityType(entityType);
@@ -350,8 +322,7 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 		return failIfPropertyNotMappable;
 	}
 
-	public void setAttributeTypes(
-		List<org.atemsource.atem.impl.hibernate.attributetype.AttributeType> attributeTypes)
+	public void setAttributeTypes(List<org.atemsource.atem.impl.hibernate.attributetype.AttributeType> attributeTypes)
 	{
 		this.attributeTypes = attributeTypes;
 	}
