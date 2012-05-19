@@ -22,8 +22,8 @@ import java.util.Set;
 
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
-import org.atemsource.atem.api.attribute.primitive.PrimitiveType;
 import org.atemsource.atem.api.type.EntityType;
+import org.atemsource.atem.api.type.PrimitiveType;
 import org.atemsource.atem.impl.common.attribute.AbstractAttribute;
 import org.atemsource.atem.impl.common.attribute.collection.AbstractCollectionAttributeImpl;
 import org.atemsource.atem.impl.common.attribute.collection.CollectionAttributeImpl;

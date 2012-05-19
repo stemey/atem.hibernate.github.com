@@ -18,8 +18,8 @@ package org.atemsource.atem.impl.hibernate.attributetype;
 
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
-import org.atemsource.atem.api.attribute.primitive.PrimitiveType;
 import org.atemsource.atem.api.type.EntityType;
+import org.atemsource.atem.api.type.PrimitiveType;
 import org.atemsource.atem.impl.common.attribute.PrimitiveAttributeImpl;
 import org.atemsource.atem.impl.common.attribute.primitive.PrimitiveTypeFactory;
 import org.atemsource.atem.impl.hibernate.HibernateAccessor;

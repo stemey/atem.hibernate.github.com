@@ -15,22 +15,19 @@
  ******************************************************************************/
 package org.atemsource.atem.impl.hibernate;
 
-
-import org.atemsource.atem.api.attribute.primitive.DateType;
 import org.atemsource.atem.api.attribute.primitive.DateType.Precision;
+import org.atemsource.atem.api.type.PrimitiveType;
+import org.atemsource.atem.api.type.PrimitiveTypeRegistrar;
 import org.atemsource.atem.impl.common.attribute.primitive.DateTypeImpl;
-import org.atemsource.atem.impl.common.attribute.primitive.PrimitiveTypeRegistrar;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class DateTypeRegistrar implements PrimitiveTypeRegistrar<Object>
-{
+public class DateTypeRegistrar implements PrimitiveTypeRegistrar {
 
 	@Override
-	public DateType getType()
-	{
-		return new DateTypeImpl(Precision.DATETIME, java.util.Date.class);
+	public PrimitiveType<?>[] getTypes() {
+		return new PrimitiveType<?>[] { new DateTypeImpl(Precision.DATETIME,
+				java.util.Date.class) };
 	}
 
 }

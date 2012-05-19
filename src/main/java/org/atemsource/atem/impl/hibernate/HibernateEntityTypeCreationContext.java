@@ -19,12 +19,12 @@ package org.atemsource.atem.impl.hibernate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.atemsource.atem.api.EntityTypeCreationContext;
-import org.atemsource.atem.api.EntityTypeRepositoryListener;
-import org.atemsource.atem.api.Phase;
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.type.EntityType;
 import org.atemsource.atem.api.type.Type;
+import org.atemsource.atem.spi.EntityTypeCreationContext;
+import org.atemsource.atem.spi.EntityTypeRepositoryListener;
+import org.atemsource.atem.spi.Phase;
 import org.hibernate.type.ComponentType;
 
 

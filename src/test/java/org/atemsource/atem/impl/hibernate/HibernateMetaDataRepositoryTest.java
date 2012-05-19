@@ -160,7 +160,7 @@ public class HibernateMetaDataRepositoryTest
 	{
 		final EntityType entityType = entityTypeRepository.getEntityType(EntityB.class);
 
-		Assert.assertEquals(4, entityType.getAttributes().size());
+		Assert.assertEquals(4, entityType.getDeclaredAttributes().size());
 	}
 
 	@Test
@@ -207,7 +207,7 @@ public class HibernateMetaDataRepositoryTest
 	{
 		final EntityType<?> entityType = entityTypeRepository.getEntityType(EntityB.class);
 		Set<EntityType> subEntityTypes = entityType.getSubEntityTypes(false);
-		Assert.assertEquals(1, subEntityTypes.iterator().next().getAttributes().size());
+		Assert.assertEquals(1, subEntityTypes.iterator().next().getDeclaredAttributes().size());
 	}
 
 	@Test
@@ -224,7 +224,7 @@ public class HibernateMetaDataRepositoryTest
 	{
 		final EntityType entityType = entityTypeRepository.getEntityType(SuperEntity.class);
 
-		Assert.assertEquals(1, entityType.getAttributes().size());
+		Assert.assertEquals(1, entityType.getDeclaredAttributes().size());
 	}
 
 	@Test

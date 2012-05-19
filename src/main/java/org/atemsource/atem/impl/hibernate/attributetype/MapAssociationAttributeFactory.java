@@ -18,9 +18,6 @@ package org.atemsource.atem.impl.hibernate.attributetype;
 
 import javax.persistence.MapKey;
 
-import org.atemsource.atem.api.EntityTypeRepositoryListener;
-import org.atemsource.atem.api.Phase;
-import org.atemsource.atem.api.PhaseEvent;
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
 import org.atemsource.atem.api.attribute.annotation.Association;
@@ -30,6 +27,9 @@ import org.atemsource.atem.impl.hibernate.HibernateAccessor;
 import org.atemsource.atem.impl.hibernate.HibernateEntityTypeCreationContext;
 import org.atemsource.atem.impl.hibernate.PropertyDescriptor;
 import org.atemsource.atem.impl.infrastructure.BeanCreator;
+import org.atemsource.atem.spi.EntityTypeRepositoryListener;
+import org.atemsource.atem.spi.Phase;
+import org.atemsource.atem.spi.PhaseEvent;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.type.MapType;
 import org.hibernate.type.Type;

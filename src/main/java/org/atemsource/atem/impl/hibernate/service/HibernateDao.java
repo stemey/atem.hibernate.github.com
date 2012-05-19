@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-import org.atemsource.atem.api.TechnicalException;
+import org.atemsource.atem.api.infrastructure.exception.TechnicalException;
 import org.atemsource.atem.api.service.Result;
 import org.atemsource.atem.api.service.Sorting;
 import org.hibernate.Criteria;
