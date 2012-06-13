@@ -56,6 +56,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
+				<configuration>
+					<useAgent>true</useAgent>
+				</configuration>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
