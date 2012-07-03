@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import org.atemsource.atem.api.EntityTypeRepository;
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
@@ -44,15 +42,15 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 	@Autowired
 	private BeanCreator beanCreator;
 
-	private SessionFactoryImplementor sessionFactory;
-
-	private ValidationMetaData validationMetaData;
-
-	private Set<String> initializedMappedSuperClass;
-
 	private boolean failIfPropertyNotMappable = true;
 
 	private boolean fieldWasNotMapped;
+
+	private Set<String> initializedMappedSuperClass;
+
+	private SessionFactoryImplementor sessionFactory;
+
+	private ValidationMetaData validationMetaData;
 
 	@Override
 	public void afterFirstInitialization(EntityTypeRepository entityTypeRepositoryImpl)
@@ -332,7 +330,6 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 		this.failIfPropertyNotMappable = failIfPropertyNotMappable;
 	}
 
-	@Resource
 	public void setSessionFactory(final SessionFactory sessionFactory)
 	{
 		this.sessionFactory = (SessionFactoryImplementor) sessionFactory;

@@ -23,8 +23,19 @@
            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<import resource="classpath:/meta/hibernate/entitytype.xml" />
+	<import resource="classpath:/atem/hibernate/entitytype.xml" />
 
+	<bean id="atem-repository"
+		class="org.atemsource.atem.impl.common.EntityTypeRepositoryImpl"
+		init-method="init">
+		<property name="repositories">
+			<list>
+				<ref bean="atem-hibernate-repository" />
+				<ref bean="atem-entityType-repository" />
+				<ref bean="atem-attribute-repository" />
+			</list>
+		</property>
+	</bean>
 
 
 	<bean id="sessionFactory"
@@ -34,6 +45,42 @@
 	</bean>
 
 
+	<bean id="atem-hibernate-repository"
+		class="org.atemsource.atem.impl.hibernate.HibernateMetaDataRepository">
+		<property name="attributeTypes">
+			<list>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.ByteArrayBlobAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.SerializableBlobAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.EnumAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.MapAssociationAttributeFactory"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.MultiAssociationAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.DateAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.PrimitiveAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.PrimitiveCollectionAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.SingleAssociationAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.SingleCompositionAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.SingleTextAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.MultiCompositionAttributeType"></bean>
+				<bean
+					class="org.atemsource.atem.impl.hibernate.attributetype.NativeSingleCompositionAttributeType"></bean>
+				
+			</list>
+		</property>
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="failIfPropertyNotMappable" value="false"/>
+	</bean>
 
 </beans>
 		
