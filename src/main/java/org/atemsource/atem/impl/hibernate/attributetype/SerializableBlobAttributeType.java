@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
 import org.atemsource.atem.api.type.EntityType;
+import org.atemsource.atem.impl.common.attribute.AbstractSingleAssociationAttribute;
 import org.atemsource.atem.impl.common.attribute.SingleAssociationAttribute;
 import org.atemsource.atem.impl.common.attribute.primitive.PrimitiveTypeFactory;
 import org.atemsource.atem.impl.hibernate.HibernateAccessor;
@@ -54,7 +55,7 @@ public class SerializableBlobAttributeType extends AttributeType
 		final HibernateEntityTypeCreationContext ctx, final PropertyDescriptor propertyDescriptor,
 		final Type attributeType, final SessionFactoryImplementor sessionFactoryImplementor)
 	{
-		SingleAssociationAttribute attribute = beanCreator.create(SingleAssociationAttribute.class);
+		AbstractSingleAssociationAttribute<J> attribute = beanCreator.create(SingleAssociationAttribute.class);
 		SerializableToBlobType manyToOneType = (SerializableToBlobType) attributeType;
 		EntityType associatedEntityType = ctx.getEntityTypeReference(attributeType.getReturnedClass());
 		if (associatedEntityType != null)

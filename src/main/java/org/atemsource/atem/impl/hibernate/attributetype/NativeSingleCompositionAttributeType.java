@@ -24,6 +24,7 @@ import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
 import org.atemsource.atem.api.type.EntityType;
 import org.atemsource.atem.api.type.PrimitiveType;
+import org.atemsource.atem.impl.common.attribute.AbstractSingleAssociationAttribute;
 import org.atemsource.atem.impl.common.attribute.PrimitiveAttributeImpl;
 import org.atemsource.atem.impl.common.attribute.SingleAssociationAttribute;
 import org.atemsource.atem.impl.common.attribute.primitive.PrimitiveTypeFactory;
@@ -75,7 +76,7 @@ public class NativeSingleCompositionAttributeType extends AttributeType
 		}
 		else
 		{
-			SingleAssociationAttribute attribute = beanCreator.create(SingleAssociationAttribute.class);
+			AbstractSingleAssociationAttribute<J> attribute = beanCreator.create(SingleAssociationAttribute.class);
 			EntityType associatedEntityType = ctx.getEntityTypeReference(returnType);
 			Set<EntityType> validTypesSet = new java.util.HashSet<EntityType>();
 			validTypesSet.add(associatedEntityType);

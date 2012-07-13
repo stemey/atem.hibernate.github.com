@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import org.atemsource.atem.api.attribute.Attribute;
 import org.atemsource.atem.api.attribute.ValidationMetaData;
 import org.atemsource.atem.api.type.EntityType;
+import org.atemsource.atem.impl.common.attribute.AbstractSingleAssociationAttribute;
 import org.atemsource.atem.impl.hibernate.HibernateAccessor;
 import org.atemsource.atem.impl.hibernate.HibernateEntityTypeCreationContext;
 import org.atemsource.atem.impl.hibernate.PropertyDescriptor;
@@ -47,7 +48,7 @@ public class SingleCompositionAttributeType extends AttributeType
 		final HibernateEntityTypeCreationContext ctx, final PropertyDescriptor propertyDescriptor,
 		final Type attributeType, final SessionFactoryImplementor sessionFactoryImplementor)
 	{
-		org.atemsource.atem.impl.common.attribute.SingleAssociationAttribute attribute =
+		AbstractSingleAssociationAttribute<J> attribute =
 			beanCreator.create(org.atemsource.atem.impl.common.attribute.SingleAssociationAttribute.class);
 		ComponentType manyToOneType = (ComponentType) attributeType;
 		EntityType associatedEntityType = ctx.createComponentType(manyToOneType);

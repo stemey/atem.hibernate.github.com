@@ -55,15 +55,11 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 	@Override
 	public void afterFirstInitialization(EntityTypeRepository entityTypeRepositoryImpl)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void afterInitialization()
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	private Set<Attribute> createAttributes(ClassMetadata classMetadata, AbstractEntityType entityType)
@@ -223,6 +219,7 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 	{
 
 		Map classMetadataMap = sessionFactory.getAllClassMetadata();
+		// initialize entity types.
 		for (Object entry : classMetadataMap.entrySet())
 		{
 			String entityName = (String) ((Map.Entry) entry).getKey();
@@ -238,6 +235,7 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 			entityType.setClassMetadata(classMetadata);
 		}
 
+		// initialize type hierachy.
 		for (Object entry : classMetadataMap.entrySet())
 		{
 			ClassMetadata classMetadata = (ClassMetadata) ((Map.Entry) entry).getValue();
@@ -265,6 +263,7 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 			}
 		}
 
+		// initialize mapped superclasses.
 		initializedMappedSuperClass = new HashSet<String>();
 		for (Object entry : classMetadataMap.entrySet())
 		{
@@ -280,6 +279,8 @@ public class HibernateMetaDataRepository extends AbstractMetaDataRepository<Obje
 			initializeHibernateSuperEntityType(entityType, classMetadata);
 			entityType.setAttributes(new ArrayList(attributes));
 		}
+
+		// intialize lookups
 		initializeLookups();
 		if (failIfPropertyNotMappable && fieldWasNotMapped)
 		{
